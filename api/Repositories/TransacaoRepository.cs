@@ -74,7 +74,7 @@ public class TransacaoRepository
                 Id = id,
                 Descricao = transacao.Descricao,
                 Valor = transacao.Valor,
-                Tipo = transacao.Tipo,
+                Tipo = transacao.Tipo.ToString().ToUpper(),
                 Id_Pessoa = transacao.Id_Pessoa,
             }
         );
