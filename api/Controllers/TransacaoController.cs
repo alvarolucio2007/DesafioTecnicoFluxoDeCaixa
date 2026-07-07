@@ -69,7 +69,7 @@ public class TransacaoController : ControllerBase
     [HttpGet("{id}")]
     public async Task<ActionResult<IEnumerable<TransacaoRespostaDTO>>> BuscarPorID(int id)
     {
-        if (id < 0)
+        if (id < 1)
             return BadRequest("Id precisa ser maior ou igual a 1.");
         try
         {
@@ -94,7 +94,7 @@ public class TransacaoController : ControllerBase
     {
         if (id < 0)
             return BadRequest("Id precisa ser maior ou igual a 1.");
-        if (dto.Id_Transacao < 1 || dto.Id_Pessoa < 1)
+        if (dto.Id_Pessoa < 1)
             return BadRequest(
                 "Id da transação e Id da pessoa precisam ambos serem maiores ou iguais a 1."
             );
@@ -102,7 +102,6 @@ public class TransacaoController : ControllerBase
         {
             var transacaoAtualizada = new Transacao
             {
-                Id = dto.Id_Transacao,
                 Descricao = dto.Descricao,
                 Valor = dto.Valor,
                 Tipo = dto.Tipo,
