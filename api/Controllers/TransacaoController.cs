@@ -10,10 +10,12 @@ using Microsoft.AspNetCore.Mvc;
 public class TransacaoController : ControllerBase
 {
     private readonly TransacaoRepository _repository;
+    private readonly PessoaRepository _pessoaRepository;
 
-    public TransacaoController(TransacaoRepository repository)
+    public TransacaoController(TransacaoRepository repository, PessoaRepository pessoaRepository)
     {
         _repository = repository;
+        _pessoaRepository = pessoaRepository;
     }
 
     [HttpPost]
@@ -26,6 +28,15 @@ public class TransacaoController : ControllerBase
         if (dto.Id_Pessoa < 1)
         {
             return BadRequest("O id da pessoa atrelada não pode ser menor que 1.");
+        }
+        var pessoa = await _pessoaRepository.BuscarPorIdAsync(dto.Id_Pessoa);
+        if (pessoa == null)
+        {
+            return NotFound("Pessoa não encontrada.");
+        }
+        if (pessoa.Idade < 18 && dto.Tipo.ToString().ToUpper() == "CREDITO")
+        {
+            return BadRequest("Menores de 18 anos só podem cadastrar despesas (DÉBITOS).");
         }
         var transacao = new Transacao
         {
@@ -98,6 +109,15 @@ public class TransacaoController : ControllerBase
             return BadRequest(
                 "Id da transação e Id da pessoa precisam ambos serem maiores ou iguais a 1."
             );
+        var pessoa = await _pessoaRepository.BuscarPorIdAsync(dto.Id_Pessoa);
+        if (pessoa == null)
+        {
+            return NotFound("Pessoa não encontrada.");
+        }
+        if (pessoa.Idade < 18 && dto.Tipo.ToString().ToUpper() == "CREDITO")
+        {
+            return BadRequest("Menores de 18 anos só podem cadastrar despesas (DÉBITOS).");
+        }
         try
         {
             var transacaoAtualizada = new Transacao
