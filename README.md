@@ -32,8 +32,8 @@ O projeto adota uma separação clara de responsabilidades:
 
 1. **Clonar o repositório:**
    ```bash
-   git clone [https://github.com/seu-usuario/DesafioTecnicoC.git](https://github.com/seu-usuario/DesafioTecnicoC.git)
-   cd DesafioTecnicoC
+   git clone https://github.com/alvarolucio2007/DesafioTecnicoFluxoDeCaixa.git
+   cd DesafioTecnicoFluxoDeCaixa
     ```
    Executar o Back-end:
     Navegue até a pasta `api` e execute os comandos:
