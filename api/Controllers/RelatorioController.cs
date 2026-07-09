@@ -16,7 +16,7 @@ public class RelatorioController : ControllerBase
         _repository = repository;
     }
 
-    [HttpGet("especifico")]
+    [HttpGet("pessoal")]
     public async Task<
         ActionResult<IEnumerable<RelatorioIndividualResponseDto>>
     > ListarRelatoriosIndividual()
