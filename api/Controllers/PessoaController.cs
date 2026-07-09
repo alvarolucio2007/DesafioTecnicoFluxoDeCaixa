@@ -143,7 +143,7 @@ public class PessoaController : ControllerBase
 
         try
         {
-            var pessoaAtualizada = new Pessoa { Nome = dto.Nome, Idade = dto.Idade };
+            var pessoaAtualizada = new PessoaModel { Nome = dto.Nome, Idade = dto.Idade };
             int linhasAfetadas = await _repository.AtualizarPessoaAsync(id, pessoaAtualizada);
             if (linhasAfetadas == 0)
                 return NotFound("Pessoa não encontrada.");
