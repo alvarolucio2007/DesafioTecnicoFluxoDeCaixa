@@ -66,8 +66,8 @@ O projeto adota uma separação clara de responsabilidades:
 
 O banco de dados roda localmente através do arquivo database.db localizado na raiz do projeto back-end.
 
-    Este arquivo está incluído no .gitignore para evitar que dados locais de testes sejam versionados.
+Este arquivo está incluído no .gitignore para evitar que dados locais de testes sejam versionados.
 
-    A string de conexão foi configurada de forma relativa para garantir portabilidade imediata em qualquer ambiente de desenvolvimento.
+A string de conexão foi configurada de forma relativa para garantir portabilidade imediata em qualquer ambiente de desenvolvimento.
 
 
